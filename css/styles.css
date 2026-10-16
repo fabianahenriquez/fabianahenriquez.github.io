@@ -1383,7 +1383,7 @@ pre.txt {
 }
 
 .pg .dk2 .art {
-  background: var(--pink);
+   background: #012169;
   color: #fff;
   padding: clamp(28px, 4vw, 44px);
   display: flex;
