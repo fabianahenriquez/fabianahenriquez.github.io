@@ -98,8 +98,8 @@
   function copyEmail(btn) {
     const label = btn.textContent;
     const done = () => { btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = label, 1500); };
-    const fail = () => { btn.textContent = 'fh95@duke.edu'; };
-    try { navigator.clipboard.writeText('fh95@duke.edu').then(done, fail); } catch (_) { fail(); }
+    const fail = () => { btn.textContent = 'henriquezfabiana33@gmail.com'; };
+    try { navigator.clipboard.writeText('henriquezfabiana33@gmail.com').then(done, fail); } catch (_) { fail(); }
   }
 
   function setup(id, w) {
@@ -135,9 +135,9 @@ looking for swe, ml/ai, and health tech
 internships, summer 2027.`,
       ls: () => 'experience/  projects/  dooked/  photography/  graphic_design/\nabout_me.txt  resume.pdf  radar_echo.png  kombucha_batch.jpeg',
       skills: () => 'python · c++ · javascript · html/css · xgboost · scikit-learn · pandas · git · redcap\nlanguages: español, english (fluent)',
-      contact: () => 'fh95@duke.edu\nfabiana.henriquez@duke.edu (same inbox)',
+      contact: () => 'henriquezfabiana33@gmail.com',
       hola: () => '¡hola! gracias por pasar por aquí.',
-      'sudo hire fabi': () => 'permission granted. email fh95@duke.edu to finish setup.'
+      'sudo hire fabi': () => 'permission granted. email henriquezfabiana33@gmail.com to finish setup.'
     };
     const ALIAS = { resume: 'resume', 'resume.pdf': 'resume', experience: 'experience', projects: 'projects', dooked: 'dooked', photography: 'photos', photos: 'photos', graphic_design: 'design', design: 'design', 'about_me.txt': 'about', about: 'about', 'radar_echo.png': 'radar', radar: 'radar', 'kombucha_batch.jpeg': 'kombucha', kombucha: 'kombucha', trash: 'trash', contact: 'contact' };
     form.addEventListener('submit', e => {
