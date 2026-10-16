@@ -155,13 +155,13 @@ button {
 }
 
 .hero .script {
-  font: 400 12.5cqw/1 var(--script-f);
-  color: var(--script);
+  font: 600 2.2cqw/1 var(--sans);
+  color: var(--ink);
+  text-align: center;
   position: relative;
   z-index: 2;
-  margin: 0 0 -.42em 6%;
-  transform: rotate(-4deg);
-  transform-origin: left
+  margin: 0 0 1cqw
+}
 }
 
 .hero .big {
