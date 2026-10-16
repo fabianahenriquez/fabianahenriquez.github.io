@@ -155,7 +155,7 @@ button {
 }
 
 .hero .script {
-  font: 600 2.2cqw/1 var(--sans);
+   font: 600 clamp(13px, 2.2cqw, 22px)/1 var(--sans);
   color: var(--ink);
   text-align: center;
   position: relative;
