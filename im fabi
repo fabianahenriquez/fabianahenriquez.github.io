@@ -67,7 +67,7 @@
     <div class="labels"><span>swe · ai/ml · health tech</span><span>duke cs '29</span><span>photography</span></div>
 
     <div class="hero" aria-label="fabi's portfolio">
-      <p class="script">fabi's</p>
+      <p class="script">Fabiana S. Henriquez</p>
       <div class="bigwrap">
         <button class="bigfolder" type="button" data-open="portfolio" aria-label="Open portfolio folder">
           <svg class="back" viewBox="0 0 100 78" aria-hidden="true">
