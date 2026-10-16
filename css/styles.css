@@ -1688,6 +1688,20 @@ pre.txt {
   }
 }
 
+/* Experience: one horizontal row */
+#experience .cards {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 18px;
+  padding-bottom: 12px
+}
+
+#experience .card {
+  flex: 0 0 min(320px, 85%);
+  scroll-snap-align: start
+}
+
 .pg .pubs {
   list-style: none;
   margin: 0;
