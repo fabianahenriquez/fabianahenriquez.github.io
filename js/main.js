@@ -134,7 +134,7 @@ kinesis foundation scholar. founder of dooked.
 looking for swe, ml/ai, and health tech
 internships, summer 2027.`,
       ls: () => 'experience/  projects/  dooked/  photography/  graphic_design/\nabout_me.txt  resume.pdf  radar_echo.png  kombucha_batch.jpeg',
-      skills: () => 'python · c++ · redcap · excel · final cut pro · canva\nlanguages: español, english (both native)',
+      skills: () => 'python · c++ · javascript · html/css · xgboost · scikit-learn · pandas · git · redcap\nlanguages: español, english (fluent)',
       contact: () => 'fh95@duke.edu\nfabiana.henriquez@duke.edu (same inbox)',
       hola: () => '¡hola! gracias por pasar por aquí.',
       'sudo hire fabi': () => 'permission granted. email fh95@duke.edu to finish setup.'
