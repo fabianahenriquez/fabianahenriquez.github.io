@@ -125,8 +125,15 @@
   <span class="hl">whoami</span>         who is fabi
   <span class="hl">ls</span>             list the desktop
   <span class="hl">open</span> &lt;name&gt;    open a file or folder (try: open resume)
+  <span class="hl">projects</span>       things i've built
+  <span class="hl">experience</span>     where i've worked
+  <span class="hl">education</span>      school stuff
   <span class="hl">skills</span>         what i work with
+  <span class="hl">now</span>            what i'm up to
   <span class="hl">contact</span>        how to reach me
+  <span class="hl">github</span>         open my github
+  <span class="hl">linkedin</span>       open my linkedin
+  <span class="hl">funfact</span>        a random fact about me
   <span class="hl">hola</span>           :)
   <span class="hl">clear</span>          clear the screen`,
       whoami: () => `fabiana henríquez. cs @ duke '29, from puerto rico.
@@ -134,8 +141,31 @@ kinesis foundation scholar. founder of dooked.
 looking for swe, ml/ai, and health tech
 internships, summer 2027.`,
       ls: () => 'experience/  projects/  dooked/  photography/  graphic_design/\nabout_me.txt  resume.pdf  radar_echo.png  kombucha_batch.jpeg',
+      projects: () => `breast_tumor_classifier   xgboost model, 96.5% test accuracy
+fabi_portfolio            this site (html, css, javascript)
+type <span class="hl">open projects</span> for more`,
+      experience: () => `clinical research assistant   duke aging center    2025 to now
+production technician         té·k kombucha        summer 2026
+executive team member         latinas in steam     2021 to 2025
+star academy research intern  arecibo observatory  fall 2021`,
+      education: () => `duke university, b.s. computer science, class of 2029
+kinesis foundation scholar
+cimatec high school, 4.0 gpa, high honors`,
       skills: () => 'python · c++ · javascript · html/css · xgboost · scikit-learn · pandas · git · redcap\nlanguages: español, english (fluent)',
+      now: () => `taking intro cs at duke
+doing research at the duke aging center
+building projects with catalyst
+practicing leetcode daily`,
       contact: () => 'henriquezfabiana33@gmail.com',
+      github: () => { window.open('https://github.com/fabianahenriquez', '_blank'); return 'opening github...'; },
+      linkedin: () => { window.open('https://www.linkedin.com/in/fabiana-h-10b0a5321/', '_blank'); return 'opening linkedin...'; },
+      funfact: () => {
+        const f = ['i learned python analyzing radar data at the arecibo observatory.',
+          'i helped make a raspberry kombucha now sold at walmart in puerto rico.',
+          'i run a duke merch brand called dooked.',
+          'i switched from pre-med to cs. no regrets.'];
+        return f[Math.floor(Math.random() * f.length)];
+      },
       hola: () => '¡hola! gracias por pasar por aquí.',
       'sudo hire fabi': () => 'permission granted. email henriquezfabiana33@gmail.com to finish setup.'
     };
@@ -186,3 +216,10 @@ internships, summer 2027.`,
   });
   desk.addEventListener('pointerdown', e => { if (e.target === desk) document.querySelectorAll('.item.sel').forEach(i => i.classList.remove('sel')); });
 })();
+
+document.querySelectorAll('.pg .xp-btn').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var row = document.querySelector(b.dataset.target || '#experience .cards');
+    row.scrollBy({ left: Number(b.dataset.dir) * 340, behavior: 'smooth' });
+  });
+});
