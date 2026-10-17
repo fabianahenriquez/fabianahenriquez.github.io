@@ -120,45 +120,80 @@
     const out = w.querySelector('.o'), form = w.querySelector('form'), input = w.querySelector('input'), box = w.querySelector('.term');
     box.addEventListener('click', () => input.focus());
     const esc = s => s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+    const hist = [];
     const C = {
-      help: () => `commands:
+      help: () => `<b>about me</b>
   <span class="hl">whoami</span>         who is fabi
-  <span class="hl">ls</span>             list the desktop
-  <span class="hl">open</span> &lt;name&gt;    open a file or folder (try: open resume)
-  <span class="hl">projects</span>       things i've built
-  <span class="hl">experience</span>     where i've worked
   <span class="hl">education</span>      school stuff
+  <span class="hl">experience</span>     where i've worked
+  <span class="hl">research</span>       papers i've worked on
+  <span class="hl">projects</span>       things i've built
   <span class="hl">skills</span>         what i work with
+  <span class="hl">hobbies</span>        what i do for fun
   <span class="hl">now</span>            what i'm up to
+  <span class="hl">funfact</span>        a random fact about me
+
+<b>links</b>
+  <span class="hl">resume</span>         open my resume
   <span class="hl">contact</span>        how to reach me
   <span class="hl">github</span>         open my github
   <span class="hl">linkedin</span>       open my linkedin
-  <span class="hl">funfact</span>        a random fact about me
-  <span class="hl">hola</span>           :)
-  <span class="hl">clear</span>          clear the screen`,
+  <span class="hl">dooked</span>         shop my merch
+
+<b>system</b>
+  <span class="hl">ls</span>             list the desktop
+  <span class="hl">open</span> &lt;name&gt;    open a file or folder
+  <span class="hl">neofetch</span>       system info
+  <span class="hl">date</span>           today's date
+  <span class="hl">history</span>        commands you've typed
+  <span class="hl">echo</span> &lt;text&gt;    repeat after me
+  <span class="hl">clear</span>          clear the screen
+
+psst: there are a few secret commands too.`,
       whoami: () => `fabiana henríquez. cs @ duke '29, from puerto rico.
 kinesis foundation scholar. founder of dooked.
 looking for swe, ml/ai, and health tech
 internships, summer 2027.`,
       ls: () => 'experience/  projects/  dooked/  photography/  graphic_design/\nabout_me.txt  resume.pdf  radar_echo.png  kombucha_batch.jpeg',
-      projects: () => `breast_tumor_classifier   xgboost model, 96.5% test accuracy
-fabi_portfolio            this site (html, css, javascript)
-type <span class="hl">open projects</span> for more`,
-      experience: () => `clinical research assistant   duke aging center    2025 to now
-production technician         té·k kombucha        summer 2026
-executive team member         latinas in steam     2021 to 2025
-star academy research intern  arecibo observatory  fall 2021`,
       education: () => `duke university, b.s. computer science, class of 2029
 kinesis foundation scholar
 cimatec high school, 4.0 gpa, high honors`,
+      experience: () => `clinical research assistant   duke aging center    2025 to now
+production technician         té·k kombucha        summer 2026
+star research intern          arecibo observatory  fall 2021
+executive team member         latinas in steam     2021 to 2025
+videographer & editor         duke responsible ai  feb 2025`,
+      research: () => `resilience and neurocognition in hispanics and non-hispanic
+white persons living with hiv (published, co-author)
+
+understanding light pollution in puerto rico (2021, co-author)`,
+      projects: () => `breast_tumor_classifier   xgboost model, 96.5% test accuracy
+portfolio                 this site (html, css, javascript)
+type <span class="hl">open projects</span> for more`,
       skills: () => 'python · c++ · javascript · html/css · xgboost · scikit-learn · pandas · git · redcap\nlanguages: español, english (fluent)',
+      hobbies: () => `dooked          my duke merch brand
+photography     product + editorial shoots in puerto rico
+graphic design  social campaigns and brand visuals
+type <span class="hl">open photography</span> or <span class="hl">open dooked</span>`,
       now: () => `taking intro cs at duke
 doing research at the duke aging center
 building projects with catalyst
 practicing leetcode daily`,
       contact: () => 'henriquezfabiana33@gmail.com',
+      resume: () => { openWin('resume'); return 'opening resume.pdf...'; },
       github: () => { window.open('https://github.com/fabianahenriquez', '_blank'); return 'opening github...'; },
       linkedin: () => { window.open('https://www.linkedin.com/in/fabiana-h-10b0a5321/', '_blank'); return 'opening linkedin...'; },
+      dooked: () => { window.open('https://dooked.printify.me/', '_blank'); return 'opening the dooked shop...'; },
+      date: () => new Date().toDateString().toLowerCase(),
+      history: () => hist.length ? hist.map((h, i) => `  ${i + 1}  ${esc(h)}`).join('\n') : 'no history yet',
+      neofetch: () => `<span class="hl">       ___      </span>  fabi@duke
+<span class="hl">      /   \\     </span>  ---------
+<span class="hl">     |  F  |    </span>  os: puerto rico 🇵🇷 → durham, nc
+<span class="hl">      \\___/     </span>  major: computer science
+<span class="hl">                </span>  uptime: class of 2029
+                  shell: bilingual (español / english)
+                  fuel: café con leche
+                  packages: python, xgboost, curiosity`,
       funfact: () => {
         const f = ['i learned python analyzing radar data at the arecibo observatory.',
           'i helped make a raspberry kombucha now sold at walmart in puerto rico.',
@@ -167,6 +202,10 @@ practicing leetcode daily`,
         return f[Math.floor(Math.random() * f.length)];
       },
       hola: () => '¡hola! gracias por pasar por aquí.',
+      hello: () => 'hi! type <span class="hl">help</span> to look around.',
+      coffee: () => 'brewing a cafecito... ☕ ready. back to coding.',
+      cafecito: () => 'brewing a cafecito... ☕ ready. back to coding.',
+      exit: () => 'you can check out any time you like, but you can never leave. (or just close the window)',
       'sudo hire fabi': () => 'permission granted. email henriquezfabiana33@gmail.com to finish setup.'
     };
     const ALIAS = { resume: 'resume', 'resume.pdf': 'resume', experience: 'experience', projects: 'projects', dooked: 'dooked', photography: 'photos', photos: 'photos', graphic_design: 'design', design: 'design', 'about_me.txt': 'about', about: 'about', 'radar_echo.png': 'radar', radar: 'radar', 'kombucha_batch.jpeg': 'kombucha', kombucha: 'kombucha', trash: 'trash', contact: 'contact' };
@@ -175,8 +214,10 @@ practicing leetcode daily`,
       const raw = input.value.trim(), cmd = raw.toLowerCase(); input.value = '';
       let res = '';
       if (cmd === 'clear') { out.innerHTML = ''; return; }
+      if (cmd) hist.push(raw);
       if (!cmd) { res = ''; }
       else if (C[cmd]) res = C[cmd]();
+      else if (cmd.startsWith('echo ')) res = esc(raw.slice(5));
       else if (cmd.startsWith('open ')) { const t = ALIAS[cmd.slice(5).trim()]; if (t) { openWin(t); res = 'opening ' + esc(cmd.slice(5).trim()) + '...'; } else res = 'no file called ' + esc(cmd.slice(5)) + '. try: ls'; }
       else if (cmd.startsWith('sudo')) res = 'nice try. try: sudo hire fabi';
       else res = 'command not found: ' + esc(raw) + '. type help';
